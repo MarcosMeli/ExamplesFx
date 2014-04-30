@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{02DDDDB0-96B6-466C-91D2-C0397EE61E18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExamplesFx</RootNamespace>
+    <AssemblyName>ExamplesFx</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Devoo.WinForms">
+      <HintPath>..\References\Devoo.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>..\packages\AvalonEdit.4.4.0.9727\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorCode\CodeColorizer.cs" />
+    <Compile Include="ColorCode\Common\ExtensionMethods.cs" />
+    <Compile Include="ColorCode\Common\Guard.cs" />
+    <Compile Include="ColorCode\Common\ILanguageRepository.cs" />
+    <Compile Include="ColorCode\Common\LanguageId.cs" />
+    <Compile Include="ColorCode\Common\LanguageRepository.cs" />
+    <Compile Include="ColorCode\Common\ScopeName.cs" />
+    <Compile Include="ColorCode\Compilation\CompiledLanguage.cs" />
+    <Compile Include="ColorCode\Compilation\ILanguageCompiler.cs" />
+    <Compile Include="ColorCode\Compilation\LanguageCompiler.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Asax.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Ashx.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Aspx.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\AspxCs.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\AspxVb.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Cpp.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\CSharp.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Css.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Html.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Java.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\JavaScript.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Php.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\PowerShell.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Sql.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\VbDotNet.cs" />
+    <Compile Include="ColorCode\Compilation\Languages\Xml.cs" />
+    <Compile Include="ColorCode\Compilation\RuleCaptures.cs" />
+    <Compile Include="ColorCode\Compilation\RuleFormats.cs" />
+    <Compile Include="ColorCode\Formatters.cs" />
+    <Compile Include="ColorCode\Formatting\HtmlFormatter.cs" />
+    <Compile Include="ColorCode\Formatting\TextInsertion.cs" />
+    <Compile Include="ColorCode\ICodeColorizer.cs" />
+    <Compile Include="ColorCode\IFormatter.cs" />
+    <Compile Include="ColorCode\ILanguage.cs" />
+    <Compile Include="ColorCode\IStyleSheet.cs" />
+    <Compile Include="ColorCode\LanguageRule.cs" />
+    <Compile Include="ColorCode\Languages.cs" />
+    <Compile Include="ColorCode\Parsing\ILanguageParser.cs" />
+    <Compile Include="ColorCode\Parsing\LanguageParser.cs" />
+    <Compile Include="ColorCode\Parsing\Scope.cs" />
+    <Compile Include="ColorCode\Style.cs" />
+    <Compile Include="ColorCode\StyleDictionary.cs" />
+    <Compile Include="ColorCode\StyleSheets.cs" />
+    <Compile Include="ColorCode\Styling\StyleSheets\DefaultStyleSheet.cs" />
+    <Compile Include="Controls\ExampleContainerWithHeader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExampleHtmlRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExampleHtmlRenderer.Designer.cs">
+      <DependentUpon>ExampleHtmlRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExampleRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExampleRenderer.Designer.cs">
+      <DependentUpon>ExampleRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExamplesContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExamplesContainer.Designer.cs">
+      <DependentUpon>ExamplesContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FileRenderer.Designer.cs">
+      <DependentUpon>FileRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextEditorWpf.xaml.cs">
+      <DependentUpon>TextEditorWpf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleBase.cs" />
+    <Compile Include="ExampleCode.cs" />
+    <Compile Include="ExampleFile.cs" />
+    <Compile Include="ExamplesEnvironment.cs" />
+    <Compile Include="HtmlWrapper.cs" />
+    <Compile Include="NetLanguage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Render\IHTMLwriter.cs" />
+    <Compile Include="Themes\ExampleThemeBase.cs" />
+    <Compile Include="TreeView\CategoryTreeNode.cs" />
+    <Compile Include="TreeView\ExampleSearchMode.cs" />
+    <Compile Include="TreeView\ExampleTreeNode.cs" />
+    <Compile Include="TreeView\ISearchableNode.cs" />
+    <Compile Include="TreeView\TreeViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TreeView\TreeViewExamples.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ColorCode\ColorCode-License.txt" />
+    <None Include="Resources\wait.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\projection_screen_present.png" />
+    <None Include="Resources\projection_screen.png" />
+    <None Include="Resources\plugin.png" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\page_up.gif" />
+    <None Include="Resources\page_left.gif" />
+    <None Include="Resources\page_down.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ExampleContainerWithHeader.resx">
+      <DependentUpon>ExampleContainerWithHeader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExampleHtmlRenderer.resx">
+      <DependentUpon>ExampleHtmlRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExampleRenderer.resx">
+      <DependentUpon>ExampleRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExamplesContainer.resx">
+      <DependentUpon>ExamplesContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FileRenderer.resx">
+      <DependentUpon>FileRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\TextEditorWpf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
