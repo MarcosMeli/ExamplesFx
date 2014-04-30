@@ -1,4 +1,10 @@
 ExamplesFx
 ==========
 
-Library and tools that allow any library developer to show the library usage in a strong typed way
+Allows super fast and great looking examples for any library, using compiled examples instead of plain text/html
+
+That allows:
+
+ * Compilable Examples
+ * Avoid Typos
+ * Auto-refactoring when changing library
