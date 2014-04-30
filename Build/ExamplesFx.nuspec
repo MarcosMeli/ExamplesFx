@@ -2,12 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>ExamplesFx</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <title>ExamplesFx</title>
         <authors>Marcos Meli</authors>
         <owners>Marcos Meli - Devoo</owners>
         <licenseUrl>https://github.com/MarcosMeli/ExamplesFx#license</licenseUrl>
         <projectUrl>https://github.com/MarcosMeli/ExamplesFx</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/MarcosMeli/ExamplesFx/master/Build/ExamplesFx.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Allows super fast and great looking examples for any library, using compiled examples instead of plain text/html</description>
         <tags>Examples Demo Showcase</tags>

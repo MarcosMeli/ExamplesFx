@@ -6,13 +6,14 @@ param($installPath, $toolsPath, $package, $project)
 try
 {
   $url = "https://github.com/MarcosMeli/ExamplesFx"
+  $libName = "ExamplesFx".ToLower();
   $dte2 = Get-Interface $dte ([EnvDTE80.DTE2])
 
   if ($dte2.ActiveWindow.Caption -eq "Package Manager Console")
   {
     # user is installing from VS NuGet console
     # get reference to the window, the console host and the input history
-    # show webpage if "install-package filehelpers" was last input
+    # show webpage if "install-package ..." was last input
 
     $consoleWindow = $(Get-VSComponentModel).GetService([NuGetConsole.IPowerConsoleWindow])
 
@@ -32,7 +33,7 @@ try
     if ($lastCommand)
     {
       $lastCommand = $lastCommand.Trim().ToLower()
-      if ($lastCommand.StartsWith("install-package") -and $lastCommand.Contains("filehelpers"))
+      if ($lastCommand.StartsWith("install-package") -and $lastCommand.Contains($libName))
       {
         $dte2.ItemOperations.Navigate($url) | Out-Null
       }
@@ -75,7 +76,7 @@ try
 
       $lines = $lastOperation -split "`r`n"
 
-      $installMatch = $lines | ? { $_.StartsWith("------- installing...filehelpers ") } | select -first 1
+      $installMatch = $lines | ? { $_.StartsWith("------- installing..." + $libName + " ") } | select -first 1
 
       if ($installMatch)
       {

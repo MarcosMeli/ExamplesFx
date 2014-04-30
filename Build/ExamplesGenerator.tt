@@ -25,7 +25,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ExamplesFramework;
+using ExamplesFx;
 
 
 namespace <#= ExamplesNamespace #>
@@ -79,6 +79,7 @@ public void ProcessProjectItem(ProjectItem projectItem, ProjectItem parent)
 		switch(Path.GetFileName(projectItem.get_FileNames(0).ToLower()))
 		{ 
 			case "examplesgenerator.autogen.cs":
+			case "examplesgenerator.config.cs":
 			case "filetestbase.cs":
 					break;
 				default:
