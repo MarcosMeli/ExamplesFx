@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devoo.ExamplesFx", "ExamplesFx\Devoo.ExamplesFx.csproj", "{02DDDDB0-96B6-466C-91D2-C0397EE61E18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx", "ExamplesFx\ExamplesFx.csproj", "{02DDDDB0-96B6-466C-91D2-C0397EE61E18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generator", "Generator", "{149AF00B-9E2F-4F33-99F0-E51AE6B2652E}"
 	ProjectSection(SolutionItems) = preProject
 		Build\ExamplesGenerator.Config.tt = Build\ExamplesGenerator.Config.tt
 		Build\ExamplesGenerator.tt = Build\ExamplesGenerator.tt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx.Tests", "ExamplesFx.Tests\ExamplesFx.Tests.csproj", "{DB1DDF36-A409-49F7-BEBB-246FF5953FC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx.Demo.WinForms", "ExamplesFx.Demo.WinForms\ExamplesFx.Demo.WinForms.csproj", "{BE57CC41-8D84-4D91-870E-32FBA805311B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx.Demo.Wpf", "ExamplesFx.Demo.Wpf\ExamplesFx.Demo.Wpf.csproj", "{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{02DDDDB0-96B6-466C-91D2-C0397EE61E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02DDDDB0-96B6-466C-91D2-C0397EE61E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02DDDDB0-96B6-466C-91D2-C0397EE61E18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1DDF36-A409-49F7-BEBB-246FF5953FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1DDF36-A409-49F7-BEBB-246FF5953FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1DDF36-A409-49F7-BEBB-246FF5953FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1DDF36-A409-49F7-BEBB-246FF5953FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE57CC41-8D84-4D91-870E-32FBA805311B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE57CC41-8D84-4D91-870E-32FBA805311B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE57CC41-8D84-4D91-870E-32FBA805311B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE57CC41-8D84-4D91-870E-32FBA805311B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
