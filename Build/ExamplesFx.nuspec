@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>ExamplesFx</id>
+        <version>1.0.0</version>
+        <title>ExamplesFx</title>
+        <authors>Marcos Meli</authors>
+        <owners>Marcos Meli - Devoo</owners>
+        <licenseUrl>https://github.com/MarcosMeli/ExamplesFx#license</licenseUrl>
+        <projectUrl>https://github.com/MarcosMeli/ExamplesFx</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Allows super fast and great looking examples for any library, using compiled examples instead of plain text/html</description>
+        <tags>Examples Demo Showcase</tags>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="ExamplesGenerator.Config.tt" target="content\Examples\ExamplesGenerator.Config.tt" />
+        <file src="ExamplesGenerator.tt" target="content\Examples\ExamplesGenerator.tt" />
+        <file src="..\Release\ExamplesFx.dll" target="lib\ExamplesFx.dll" />
+        <file src="..\Release\ExamplesFx.xml" target="lib\ExamplesFx.xml" />
+        <file src="install.ps1" target="tools\install.ps1" />
+    </files>
+</package>

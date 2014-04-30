@@ -8,3 +8,11 @@ That allows:
  * Compilable Examples
  * Avoid Typos
  * Auto-refactoring when changing library
+
+
+License
+-------
+
+ The ExamplesFx are licensed under the **new BSD or LPGL, pick the best for you**
+ 
+ ExamplesFx Library source and binaries are **completely free for commercial and non commercial use**
