@@ -46,7 +46,7 @@
             this.ClientSize = new System.Drawing.Size(944, 730);
             this.Controls.Add(this.examplesContainerWithHeader1);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.Text = "Examples Demo";
             this.ResumeLayout(false);
 
         }
