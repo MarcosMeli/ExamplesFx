@@ -3,6 +3,9 @@ param($installPath, $toolsPath, $package, $project)
 # open splash page on package install
 # don't open if installed as a dependency
 
+[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[Windows.Forms.MessageBox]::Show("Test message ", "Test", [Windows.Forms.MessageBoxButtons]::OK, [Windows.Forms.MessageBoxIcon]::Information)
+
 try
 {
   $url = "https://github.com/MarcosMeli/ExamplesFx"

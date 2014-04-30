@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using ExamplesFx.TreeView;
 
@@ -76,6 +77,23 @@ namespace ExamplesFx.Controls
         public ExampleCode CurrentExample
         {
             get { return tvExamples.SelectedExample; }
+        }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "Search...")
+                txtSearch.Text = "";
+            txtSearch.ForeColor = Color.Black;
+            cboSearchMode.Visible = true;
+
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+                txtSearch.Text = "Search...";
+            txtSearch.ForeColor = Color.FromArgb(224, 224, 224);
+            cboSearchMode.Visible = false;
         }
     }
 }

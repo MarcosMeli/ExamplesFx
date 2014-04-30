@@ -22,7 +22,7 @@ namespace ExamplesFx.Controls
             ExamplesEnvironment.Dispose();
             base.Dispose(disposing);
         }
-
+         
         #region Component Designer generated code
 
         /// <summary> 
@@ -33,24 +33,24 @@ namespace ExamplesFx.Controls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExamplesContainer));
-            DefaultExampleTheme defaultExampleTheme2 = new DefaultExampleTheme();
+            ExamplesFx.DefaultExampleTheme defaultExampleTheme1 = new ExamplesFx.DefaultExampleTheme();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.imgTreeView = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.cmdCollapse = new System.Windows.Forms.ToolStripButton();
-            this.cmdExpand = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.txtSearch = new System.Windows.Forms.ToolStripTextBox();
             this.cboSearchMode = new System.Windows.Forms.ToolStripComboBox();
-            this.imgTreeView = new System.Windows.Forms.ImageList(this.components);
-            this.tvExamples = new TreeViewExamples();
-            this.exampleRenderer = new ExampleHtmlRenderer();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdCollapse = new System.Windows.Forms.ToolStripButton();
+            this.cmdExpand = new System.Windows.Forms.ToolStripButton();
+            this.tvExamples = new ExamplesFx.TreeView.TreeViewExamples();
+            this.exampleRenderer = new ExamplesFx.Controls.ExampleHtmlRenderer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -72,67 +72,15 @@ namespace ExamplesFx.Controls
             this.splitContainer1.SplitterDistance = 295;
             this.splitContainer1.TabIndex = 3;
             // 
-            // toolStrip1
+            // panel1
             // 
-            this.toolStrip1.AllowMerge = false;
-            this.toolStrip1.AutoSize = false;
-            this.toolStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmdCollapse,
-            this.cmdExpand,
-            this.toolStripSeparator3,
-            this.txtSearch,
-            this.cboSearchMode});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(295, 28);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // cmdCollapse
-            // 
-            this.cmdCollapse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cmdCollapse.Image = global::ExamplesFx.Properties.Resources.page_left;
-            this.cmdCollapse.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cmdCollapse.Name = "cmdCollapse";
-            this.cmdCollapse.Size = new System.Drawing.Size(23, 20);
-            this.cmdCollapse.Text = "Collapse";
-            this.cmdCollapse.Click += new System.EventHandler(this.cmdCollapse_Click);
-            // 
-            // cmdExpand
-            // 
-            this.cmdExpand.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cmdExpand.Image = global::ExamplesFx.Properties.Resources.page_down;
-            this.cmdExpand.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cmdExpand.Name = "cmdExpand";
-            this.cmdExpand.Size = new System.Drawing.Size(23, 20);
-            this.cmdExpand.Text = "Expand";
-            this.cmdExpand.Click += new System.EventHandler(this.cmdExpand_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(80, 23);
-            this.txtSearch.ToolTipText = "Search";
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // cboSearchMode
-            // 
-            this.cboSearchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboSearchMode.Items.AddRange(new object[] {
-            "Name",
-            "Name & Descriptions",
-            "Text, Descriptions & Code"});
-            this.cboSearchMode.Name = "cboSearchMode";
-            this.cboSearchMode.Size = new System.Drawing.Size(135, 23);
-            this.cboSearchMode.SelectedIndexChanged += new System.EventHandler(this.cboSearchMode_SelectedIndexChanged);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.tvExamples);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(295, 492);
+            this.panel1.TabIndex = 3;
             // 
             // imgTreeView
             // 
@@ -152,6 +100,73 @@ namespace ExamplesFx.Controls
             this.imgTreeView.Images.SetKeyName(11, "projection_screen_present.png");
             this.imgTreeView.Images.SetKeyName(12, "wand.png");
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AllowMerge = false;
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmdCollapse,
+            this.cmdExpand,
+            this.toolStripSeparator3,
+            this.txtSearch,
+            this.cboSearchMode});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(295, 28);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 28);
+            this.txtSearch.Text = "Search...";
+            this.txtSearch.ToolTipText = "Search";
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // cboSearchMode
+            // 
+            this.cboSearchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSearchMode.Items.AddRange(new object[] {
+            "Name",
+            "Name & Descriptions",
+            "Text, Descriptions & Code"});
+            this.cboSearchMode.Name = "cboSearchMode";
+            this.cboSearchMode.Size = new System.Drawing.Size(115, 28);
+            this.cboSearchMode.Visible = false;
+            this.cboSearchMode.SelectedIndexChanged += new System.EventHandler(this.cboSearchMode_SelectedIndexChanged);
+            // 
+            // cmdCollapse
+            // 
+            this.cmdCollapse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.cmdCollapse.Image = global::ExamplesFx.Properties.Resources.page_left;
+            this.cmdCollapse.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cmdCollapse.Name = "cmdCollapse";
+            this.cmdCollapse.Size = new System.Drawing.Size(23, 25);
+            this.cmdCollapse.Text = "Collapse";
+            this.cmdCollapse.Click += new System.EventHandler(this.cmdCollapse_Click);
+            // 
+            // cmdExpand
+            // 
+            this.cmdExpand.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.cmdExpand.Image = global::ExamplesFx.Properties.Resources.page_down;
+            this.cmdExpand.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cmdExpand.Name = "cmdExpand";
+            this.cmdExpand.Size = new System.Drawing.Size(23, 25);
+            this.cmdExpand.Text = "Expand";
+            this.cmdExpand.Click += new System.EventHandler(this.cmdExpand_Click);
+            // 
             // tvExamples
             // 
             this.tvExamples.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -160,7 +175,7 @@ namespace ExamplesFx.Controls
             this.tvExamples.ImageList = this.imgTreeView;
             this.tvExamples.Location = new System.Drawing.Point(0, 0);
             this.tvExamples.Name = "tvExamples";
-            this.tvExamples.SearchMode = ExamplesSearchMode.Name;
+            this.tvExamples.SearchMode = ExamplesFx.TreeView.ExamplesSearchMode.Name;
             this.tvExamples.SearchText = null;
             this.tvExamples.SelectedImageIndex = 0;
             this.tvExamples.Size = new System.Drawing.Size(291, 488);
@@ -177,17 +192,7 @@ namespace ExamplesFx.Controls
             this.exampleRenderer.Name = "exampleRenderer";
             this.exampleRenderer.Size = new System.Drawing.Size(753, 520);
             this.exampleRenderer.TabIndex = 7;
-            this.exampleRenderer.Theme = defaultExampleTheme2;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.tvExamples);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 492);
-            this.panel1.TabIndex = 3;
+            this.exampleRenderer.Theme = defaultExampleTheme1;
             // 
             // ExamplesContainer
             // 
@@ -201,16 +206,15 @@ namespace ExamplesFx.Controls
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private TreeViewExamples tvExamples;
         private ExampleHtmlRenderer exampleRenderer;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -221,5 +225,6 @@ namespace ExamplesFx.Controls
         private System.Windows.Forms.ToolStripComboBox cboSearchMode;
         private System.Windows.Forms.ImageList imgTreeView;
         private System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

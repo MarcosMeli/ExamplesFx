@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>ExamplesFx</id>
-        <version>1.0.1</version>
+        <version>1.0.10</version>
         <title>ExamplesFx</title>
         <authors>Marcos Meli</authors>
         <owners>Marcos Meli - Devoo</owners>
@@ -21,6 +21,8 @@
         <file src="ExamplesGenerator.tt" target="content\Examples\ExamplesGenerator.tt" />
         <file src="..\Release\ExamplesFx.dll" target="lib\ExamplesFx.dll" />
         <file src="..\Release\ExamplesFx.xml" target="lib\ExamplesFx.xml" />
+        <file src="..\Release\Devoo.WinForms.dll" target="lib\Devoo.WinForms.dll" />
+        <file src="..\Release\ICSharpCode.AvalonEdit.dll" target="lib\ICSharpCode.AvalonEdit.dll" />
         <file src="install.ps1" target="tools\install.ps1" />
     </files>
 </package>

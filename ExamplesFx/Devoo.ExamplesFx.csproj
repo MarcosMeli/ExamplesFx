@@ -102,8 +102,11 @@
     <Compile Include="ColorCode\StyleDictionary.cs" />
     <Compile Include="ColorCode\StyleSheets.cs" />
     <Compile Include="ColorCode\Styling\StyleSheets\DefaultStyleSheet.cs" />
-    <Compile Include="Controls\ExampleContainerWithHeader.cs">
+    <Compile Include="Controls\ExamplesContainerWithHeader.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExamplesContainerWithHeader.Designer.cs">
+      <DependentUpon>ExamplesContainerWithHeader.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ExampleHtmlRenderer.cs">
       <SubType>UserControl</SubType>
@@ -170,8 +173,8 @@
     <None Include="Resources\page_down.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\ExampleContainerWithHeader.resx">
-      <DependentUpon>ExampleContainerWithHeader.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ExamplesContainerWithHeader.resx">
+      <DependentUpon>ExamplesContainerWithHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ExampleHtmlRenderer.resx">
       <DependentUpon>ExampleHtmlRenderer.cs</DependentUpon>
