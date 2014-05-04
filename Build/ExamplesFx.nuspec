@@ -19,10 +19,10 @@
     <files>
         <file src="ExamplesGenerator.Config.tt" target="content\Examples\ExamplesGenerator.Config.tt" />
         <file src="ExamplesGenerator.tt" target="content\Examples\ExamplesGenerator.tt" />
-        <file src="..\Release\ExamplesFx.dll" target="lib\ExamplesFx.dll" />
-        <file src="..\Release\ExamplesFx.xml" target="lib\ExamplesFx.xml" />
-        <file src="..\Release\Devoo.WinForms.dll" target="lib\Devoo.WinForms.dll" />
-        <file src="..\Release\ICSharpCode.AvalonEdit.dll" target="lib\ICSharpCode.AvalonEdit.dll" />
+        <file src="..\Release\Lib\net40\ExamplesFx.dll" target="lib\net40\ExamplesFx.dll" />
+        <file src="..\Release\Lib\net40\ExamplesFx.xml" target="lib\net40\ExamplesFx.xml" />
+        <file src="..\Release\Lib\net45\ExamplesFx.dll" target="lib\net45\ExamplesFx.dll" />
+        <file src="..\Release\Lib\net45\ExamplesFx.xml" target="lib\net45\ExamplesFx.xml" />
         <file src="install.ps1" target="tools\install.ps1" />
     </files>
 </package>

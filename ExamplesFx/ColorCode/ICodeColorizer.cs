@@ -40,7 +40,6 @@ namespace ExamplesFx.ColorCode
         /// <param name="textWriter">The text writer to which the colorized source code will be written.</param>
         /// <param name="formatter">The formatter to use to colorize the source code.</param>
         /// <param name="styleSheet">The style sheet to use to colorize the source code.</param>
-        /// <param name="textWriter">The text writer to which the colorized source code will be written.</param>
         void Colorize(string sourceCode,
             ILanguage language,
             IFormatter formatter,

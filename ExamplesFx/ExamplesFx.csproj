@@ -17,20 +17,20 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Release\</OutputPath>
+    <OutputPath>..\Release\Bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Release\ExamplesFx.xml</DocumentationFile>
+    <DocumentationFile>..\Release\Bin\ExamplesFx.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Release\</OutputPath>
+    <OutputPath>..\Release\Bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Release\ExamplesFx.xml</DocumentationFile>
+    <DocumentationFile>..\Release\Bin\ExamplesFx.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Devoo.WinForms">
@@ -203,6 +203,17 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug goto :exit
+move "$(TargetDir)$(TargetName).dll" "$(TargetDir)$(TargetName).ToMerge.dll"
+"$(SolutionDir)Libs\ILMerge\ilmerge" /ndebug /targetplatform:$(TargetFrameworkVersion.Substring(0, 2)) /out:"$(TargetDir)$(TargetName).dll" "$(TargetDir)$(TargetName).ToMerge.dll" "$(TargetDir)Devoo.WinForms.dll" "$(TargetDir)ICSharpCode.AvalonEdit.dll" /internalize
+del "$(TargetDir)Devoo.WinForms.dll" 
+del "$(TargetDir)ICSharpCode.AvalonEdit.dll"
+del "$(TargetDir)*.xml"
+del "$(TargetDir)*.pdb"
+del "$(TargetDir)$(TargetName).ToMerge.dll"
+:exit</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -90,9 +90,15 @@ namespace ExamplesFx.Controls
 
         private void txtSearch_Leave(object sender, EventArgs e)
         {
+            if (ActiveControl == cboSearchMode.Control)
+                return;
+
             if (txtSearch.Text == "")
+			{
                 txtSearch.Text = "Search...";
-            txtSearch.ForeColor = Color.FromArgb(224, 224, 224);
+            	txtSearch.ForeColor = Color.FromArgb(224, 224, 224);
+			}
+
             cboSearchMode.Visible = false;
         }
     }
