@@ -209,7 +209,7 @@ move "$(TargetDir)$(TargetName).dll" "$(TargetDir)$(TargetName).ToMerge.dll"
 "$(SolutionDir)Libs\ILMerge\ilmerge" /ndebug /targetplatform:$(TargetFrameworkVersion.Substring(0, 2)) /out:"$(TargetDir)$(TargetName).dll" "$(TargetDir)$(TargetName).ToMerge.dll" "$(TargetDir)Devoo.WinForms.dll" "$(TargetDir)ICSharpCode.AvalonEdit.dll" /internalize
 del "$(TargetDir)Devoo.WinForms.dll" 
 del "$(TargetDir)ICSharpCode.AvalonEdit.dll"
-del "$(TargetDir)*.xml"
+del "$(TargetDir)ICSharpCode.AvalonEdit.xml"
 del "$(TargetDir)*.pdb"
 del "$(TargetDir)$(TargetName).ToMerge.dll"
 :exit</PostBuildEvent>
