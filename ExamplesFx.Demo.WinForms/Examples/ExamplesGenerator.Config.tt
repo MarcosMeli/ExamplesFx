@@ -2,7 +2,6 @@
 
     // Configuration of the Examples Generation:
     string ExamplesFolder    = "Examples";
-    
-    string ExamplesNamespace = "Examples";
+    string ExamplesNamespace = "ExamplesFx.Demo";
 
 #>

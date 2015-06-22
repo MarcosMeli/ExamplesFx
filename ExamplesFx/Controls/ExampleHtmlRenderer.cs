@@ -114,6 +114,7 @@ namespace ExamplesFx.Controls
 
             sb.AppendLine(@"<div id=""consola""><pre style=""background-color:#000;color:#DDD;border: 0px;"">" +
                           Example.Example.InputFile + "</pre></div></body>");
+            
             browserInput.DocumentText = sb.ToString();
 
             splitOutHorizontal.Panel2Collapsed = false;

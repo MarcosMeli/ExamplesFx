@@ -1,8 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-# SharpDevelop 5.0
-VisualStudioVersion = 12.0.30324.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx", "ExamplesFx\ExamplesFx.csproj", "{02DDDDB0-96B6-466C-91D2-C0397EE61E18}"
 EndProject
@@ -17,6 +16,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx.Demo.WinForms", "ExamplesFx.Demo.WinForms\ExamplesFx.Demo.WinForms.csproj", "{BE57CC41-8D84-4D91-870E-32FBA805311B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFx.Demo.Wpf", "ExamplesFx.Demo.Wpf\ExamplesFx.Demo.Wpf.csproj", "{28061AEC-9C2D-46CC-9D82-AEDA423F4EFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7FA85542-F6A8-4B2E-8536-58B4F18BA1FC}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

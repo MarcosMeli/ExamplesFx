@@ -15,6 +15,8 @@ namespace ExamplesFx.Demo.WinForms
         public frmMain()
         {
             InitializeComponent();
+
+            exampleContainer.LoadExamples(ExamplesFactory.GetExamples());
         }
     }
 }

@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.examplesContainerWithHeader1 = new ExamplesFx.Controls.ExamplesContainerWithHeader();
+            this.exampleContainer = new ExamplesFx.Controls.ExamplesContainerWithHeader();
             this.SuspendLayout();
             // 
-            // examplesContainerWithHeader1
+            // exampleContainer
             // 
-            this.examplesContainerWithHeader1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.examplesContainerWithHeader1.Location = new System.Drawing.Point(0, 0);
-            this.examplesContainerWithHeader1.Name = "examplesContainerWithHeader1";
-            this.examplesContainerWithHeader1.Size = new System.Drawing.Size(944, 730);
-            this.examplesContainerWithHeader1.TabIndex = 0;
+            this.exampleContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exampleContainer.Location = new System.Drawing.Point(0, 0);
+            this.exampleContainer.Name = "exampleContainer";
+            this.exampleContainer.Size = new System.Drawing.Size(944, 730);
+            this.exampleContainer.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 730);
-            this.Controls.Add(this.examplesContainerWithHeader1);
+            this.Controls.Add(this.exampleContainer);
             this.Name = "frmMain";
             this.Text = "Examples Demo";
             this.ResumeLayout(false);
@@ -53,7 +53,7 @@
 
         #endregion
 
-        private Controls.ExamplesContainerWithHeader examplesContainerWithHeader1;
+        private Controls.ExamplesContainerWithHeader exampleContainer;
     }
 }
 

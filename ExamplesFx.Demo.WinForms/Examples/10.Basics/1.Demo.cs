@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExamplesFx.Demo.WinForms
+namespace ExamplesFx.Demo
 {
 	public class ProgramDemo: ExampleBase
     {
 		public override void Run()
 		{
-			throw new NotImplementedException();
+			Console.WriteLine("Test Example !!");
 		}
     }
 }
