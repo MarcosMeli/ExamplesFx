@@ -44,7 +44,8 @@ namespace ExamplesFx.Tests
                 var extraPath = string.Join("_", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
                 var category = string.Join(@"\", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
 
-                var ex = new ExampleCode(null, RemoveOrder(doc.Name), category, doc.FilePath);
+                var exampleName = Path.GetFileNameWithoutExtension(RemoveOrder(doc.Name));
+                var ex = new ExampleCode(null, exampleName, category, doc.FilePath);
                 res.Add(ex);
 
                 var fileContent = doc.GetTextAsync().Result.ToString();
@@ -53,13 +54,23 @@ namespace ExamplesFx.Tests
                 ex.Files.Add(mainExample);
                 mainExample.Contents = fileContent;
 
-                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + RemoveOrder(doc.Name));
-                examplePath = Path.ChangeExtension(examplePath, "html");
 
+                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + exampleName) + ".html";
+                
+                fileContent = @"---
+layout: default
+title: "+ exampleName + @"
+permalink: /Example/"+ exampleName + @"
+---
+" +
+                    fileContent;
                 File.WriteAllText(examplePath, fileContent);
             }
 
+            CreateIndex(res);
+
             var frm = new Form();
+
             var container = new ExamplesContainerWithHeader();
             container.Dock = DockStyle.Fill;
             frm.Controls.Add(container);
@@ -69,6 +80,16 @@ namespace ExamplesFx.Tests
             container.LoadExamples(res);
 
             frm.ShowDialog();
+        }
+
+        private void CreateIndex(List<ExampleCode> res)
+        {
+            //var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath + "_") + RemoveOrder(doc.Name));
+            //examplePath = Path.ChangeExtension(examplePath, "html");
+
+            //File.WriteAllText(examplePath, fileContent);
+
+
         }
 
         private string RemoveOrder(string s)
@@ -81,8 +102,5 @@ namespace ExamplesFx.Tests
             return s.Substring(parts + 1);
             }
     }
-
-    public class ExampleRenderer
-    {
-    }
+    
 }
