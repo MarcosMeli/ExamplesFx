@@ -1,11 +1,14 @@
-﻿namespace ExamplesFx.Controls
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace ExamplesFx.Controls
 {
     partial class ExampleHtmlRenderer
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -196,15 +199,15 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton cmdRunDemo;
-        private System.Windows.Forms.WebBrowser browserExample;
-        private System.Windows.Forms.WebBrowser browserOutput;
-        private System.Windows.Forms.SplitContainer splitOutHorizontal;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.SplitContainer splitBottom;
-        private System.Windows.Forms.WebBrowser browserInput;
-        private System.Windows.Forms.Label label2;
+        private ToolStrip toolStrip2;
+        private ToolStripButton cmdRunDemo;
+        private WebBrowser browserExample;
+        private WebBrowser browserOutput;
+        private SplitContainer splitOutHorizontal;
+        private Label label1;
+        private Panel panel1;
+        private SplitContainer splitBottom;
+        private WebBrowser browserInput;
+        private Label label2;
     }
 }

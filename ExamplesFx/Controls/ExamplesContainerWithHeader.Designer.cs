@@ -1,11 +1,14 @@
-﻿namespace ExamplesFx.Controls
+﻿using System.ComponentModel;
+using Devoo.WinForms;
+
+namespace ExamplesFx.Controls
 {
     partial class ExamplesContainerWithHeader
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -75,6 +78,6 @@
 
         #endregion
 
-        private Devoo.WinForms.ReflectionHeader reflectionHeader1;
+        private ReflectionHeader reflectionHeader1;
     }
 }

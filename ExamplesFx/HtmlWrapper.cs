@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,12 +31,12 @@ namespace ExamplesFx
         /// <summary>
         /// From template,  contains the top of the file
         /// </summary>
-        private static string Heading = null;
+        private static string Heading;
 
         /// <summary>
         /// from Template contains the bottom of the file
         /// </summary>
-        private static string Footing = null;
+        private static string Footing;
 
         /// <summary>
         /// Body text before expansion
@@ -48,7 +47,7 @@ namespace ExamplesFx
         /// Whether the blockquote commands are embedded, bad to inline viewing, better for webpages
         /// In DEBUG it will relfect the working directory of your Doc/Include directory
         /// </summary>
-        public bool UseBlockQuotes = false;
+        public bool UseBlockQuotes;
 
         public string URLprefix = "http://filehelpers.com/";
 
@@ -73,12 +72,12 @@ namespace ExamplesFx
         /// <param name="pBody">Html content that appears between body tags</param>
         public HtmlWrapper(String pBody, List<ExampleFile> pFiles)
         {
-            this.Body = pBody;
-            this.Files = pFiles;
+            Body = pBody;
+            Files = pFiles;
 
 #if DEBUG
             var url = new Uri(Path.GetFullPath(DocsOutput), UriKind.Absolute);
-            this.URLprefix = url.ToString() + "/";
+            URLprefix = url + "/";
 #endif
         }
 
@@ -107,7 +106,7 @@ namespace ExamplesFx
                         html.Append(URLprefix);
                         continue;
                     }
-                    var details = this.Files.Where(x => x.Filename == filename).FirstOrDefault();
+                    var details = Files.Where(x => x.Filename == filename).FirstOrDefault();
                     if (details == null) {
                         html.Append("<p><b>File ");
                         html.Append(part);
@@ -165,11 +164,11 @@ namespace ExamplesFx
         /// <param name="filename">HTML output filename</param>
         public void Export(string filename)
         {
-            bool storeUseBlockQuotes = this.UseBlockQuotes;
-            string storePrefix = this.URLprefix;
-            this.URLprefix = string.Empty;
+            bool storeUseBlockQuotes = UseBlockQuotes;
+            string storePrefix = URLprefix;
+            URLprefix = string.Empty;
             try {
-                this.UseBlockQuotes = true;
+                UseBlockQuotes = true;
                 GetHeadAndFoot();
                 string output = Path.Combine(DocsOutput, filename);
                 using (var writer = new StreamWriter(output)) {
@@ -182,8 +181,8 @@ namespace ExamplesFx
                 }
             }
             finally {
-                this.UseBlockQuotes = storeUseBlockQuotes;
-                this.URLprefix = storePrefix;
+                UseBlockQuotes = storeUseBlockQuotes;
+                URLprefix = storePrefix;
             }
         }
 

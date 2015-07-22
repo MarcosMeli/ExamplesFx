@@ -1,11 +1,14 @@
-﻿namespace ExamplesFx.Controls
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace ExamplesFx.Controls
 {
     partial class ExampleRenderer
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -136,11 +139,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton cmdRunDemo;
-        private System.Windows.Forms.ToolStripLabel lblTestDescription;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.SplitContainer splitFiles;
+        private ToolStrip toolStrip2;
+        private ToolStripButton cmdRunDemo;
+        private ToolStripLabel lblTestDescription;
+        private TableLayoutPanel tableLayoutPanel1;
+        private SplitContainer splitFiles;
         private FileRenderer fileOutput;
     }
 }

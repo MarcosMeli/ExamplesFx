@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -32,7 +30,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"\<![ \r\n\t]*(--([^\-]|[\r\n]|-[^\-])*--[ \r\n\t]*)\>",
                         new Dictionary<int, string> {
-                            {0, ScopeName.HtmlComment},
+                            {0, ScopeName.HtmlComment}
                         }),
                     new LanguageRule(
                         @"(?i)(<!)(DOCTYPE)(?:\s+([a-zA-Z0-9]+))*(?:\s+(""[^""]*?""))*(>)",
@@ -72,7 +70,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                             {14, string.Format("{0}{1}", ScopeName.LanguagePrefix, LanguageId.JavaScript)},
                             {15, ScopeName.HtmlTagDelimiter},
                             {16, ScopeName.HtmlElementName},
-                            {17, ScopeName.HtmlTagDelimiter},
+                            {17, ScopeName.HtmlTagDelimiter}
                         }),
                     new LanguageRule(
                         @"(?xis)(</?)
@@ -106,7 +104,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                         @"(?i)&\#?[a-z0-9]+?;",
                         new Dictionary<int, string> {
                             {0, ScopeName.HtmlEntity}
-                        }),
+                        })
                 };
             }
         }

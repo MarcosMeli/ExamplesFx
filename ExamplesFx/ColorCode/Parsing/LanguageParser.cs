@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using ExamplesFx.ColorCode.Common;
@@ -121,10 +120,8 @@ namespace ExamplesFx.ColorCode.Parsing
                 if (regexGroup.Length == 0 ||
                     String.IsNullOrEmpty(styleName))
                     continue;
-                else {
-                    foreach (Capture regexCapture in regexGroup.Captures)
-                        AppendCapturedStylesForRegexCapture(regexCapture, currentIndex, styleName, capturedStyles);
-                }
+                foreach (Capture regexCapture in regexGroup.Captures)
+                    AppendCapturedStylesForRegexCapture(regexCapture, currentIndex, styleName, capturedStyles);
             }
 
             return capturedStyles;
@@ -155,28 +152,24 @@ namespace ExamplesFx.ColorCode.Parsing
 
             if (nestedLanguage == null)
                 throw new InvalidOperationException("The nested language was not found in the language repository.");
-            else {
-                CompiledLanguage nestedCompiledLanguage = languageCompiler.Compile(nestedLanguage);
+            CompiledLanguage nestedCompiledLanguage = languageCompiler.Compile(nestedLanguage);
 
-                Match regexMatch = nestedCompiledLanguage.Regex.Match(regexCapture.Value, 0, regexCapture.Value.Length);
+            Match regexMatch = nestedCompiledLanguage.Regex.Match(regexCapture.Value, 0, regexCapture.Value.Length);
 
-                if (!regexMatch.Success)
-                    return;
-                else {
-                    while (regexMatch.Success) {
-                        List<Scope> capturedStylesForMatchedFragment = GetCapturedStyles(regexMatch,
-                            0,
-                            nestedCompiledLanguage);
-                        List<Scope> capturedStyleTree = CreateCapturedStyleTree(capturedStylesForMatchedFragment);
+            if (!regexMatch.Success)
+                return;
+            while (regexMatch.Success) {
+                List<Scope> capturedStylesForMatchedFragment = GetCapturedStyles(regexMatch,
+                    0,
+                    nestedCompiledLanguage);
+                List<Scope> capturedStyleTree = CreateCapturedStyleTree(capturedStylesForMatchedFragment);
 
-                        foreach (var nestedCapturedStyle in capturedStyleTree) {
-                            IncreaseCapturedStyleIndicies(capturedStyleTree, offset);
-                            capturedStyles.Add(nestedCapturedStyle);
-                        }
-
-                        regexMatch = regexMatch.NextMatch();
-                    }
+                foreach (var nestedCapturedStyle in capturedStyleTree) {
+                    IncreaseCapturedStyleIndicies(capturedStyleTree, offset);
+                    capturedStyles.Add(nestedCapturedStyle);
                 }
+
+                regexMatch = regexMatch.NextMatch();
             }
         }
 

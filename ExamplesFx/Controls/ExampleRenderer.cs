@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ExamplesFx.Controls
@@ -33,11 +27,11 @@ namespace ExamplesFx.Controls
 
         private void RenderExample()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             
             Clear();
 
-            this.lblTestDescription.Text = Example.Description;
+            lblTestDescription.Text = Example.Description;
             //lblDescription.Text = Example.Description;
             cmdRunDemo.Visible = Example.Runnable;
 
@@ -49,13 +43,13 @@ namespace ExamplesFx.Controls
                 CreateNewDemoFile(i, file);
             }
 
-            this.ResumeLayout();
+            ResumeLayout();
         }
 
 
         public void Clear()
         {
-            this.lblTestDescription.Text = string.Empty;
+            lblTestDescription.Text = string.Empty;
             cmdRunDemo.Visible = false;
             tableLayoutPanel1.Controls.Clear();
         }

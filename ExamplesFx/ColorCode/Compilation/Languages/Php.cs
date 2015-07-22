@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -32,34 +30,34 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/",
                         new Dictionary<int, string> {
-                            {0, ScopeName.Comment},
+                            {0, ScopeName.Comment}
                         }),
                     new LanguageRule(
                         @"(//.*?)\r?$",
                         new Dictionary<int, string> {
-                            {1, ScopeName.Comment},
+                            {1, ScopeName.Comment}
                         }),
                     new LanguageRule(
                         @"(#.*?)\r?$",
                         new Dictionary<int, string> {
-                            {1, ScopeName.Comment},
+                            {1, ScopeName.Comment}
                         }),
                     new LanguageRule(
                         @"'[^\n]*?(?<!\\)'",
                         new Dictionary<int, string> {
-                            {0, ScopeName.String},
+                            {0, ScopeName.String}
                         }),
                     new LanguageRule(
                         @"""[^\n]*?(?<!\\)""",
                         new Dictionary<int, string> {
-                            {0, ScopeName.String},
+                            {0, ScopeName.String}
                         }),
                     new LanguageRule(
                         // from http://us.php.net/manual/en/reserved.keywords.php
                         @"\b(abstract|and|array|as|break|case|catch|cfunction|class|clone|const|continue|declare|default|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|exception|extends|fclose|file|final|for|foreach|function|global|goto|if|implements|interface|instanceof|mysqli_fetch_object|namespace|new|old_function|or|php_user_filter|private|protected|public|static|switch|throw|try|use|var|while|xor|__CLASS__|__DIR__|__FILE__|__FUNCTION__|__LINE__|__METHOD__|__NAMESPACE__|die|echo|empty|exit|eval|include|include_once|isset|list|require|require_once|return|print|unset)\b",
                         new Dictionary<int, string> {
-                            {1, ScopeName.Keyword},
-                        }),
+                            {1, ScopeName.Keyword}
+                        })
                 };
             }
         }

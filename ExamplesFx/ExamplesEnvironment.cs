@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Collections;
 using System;
 using System.IO;
 using System.Text;
@@ -92,7 +90,7 @@ namespace ExamplesFx
                 Path = path;
             }
 
-            public string Path { get; set; }
+            public string Path { get; }
             public event FileSystemEventHandler Created;
 
             private void OnCreated(FileSystemEventArgs e)

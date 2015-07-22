@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,7 +12,7 @@ namespace ExamplesFx
 
             internal ExampleEventArgs(ExampleCode example)
             {
-                this.Example = example;
+                Example = example;
             }
         }
 
@@ -26,7 +25,7 @@ namespace ExamplesFx
 
             internal NewFileEventArgs(ExampleFile file)
             {
-                this.File = file;
+                File = file;
             }
         }
 
@@ -45,8 +44,11 @@ namespace ExamplesFx
         public ExampleCode(ExampleBase example, string name, string category, string solutionFile)
         {
             Example = example;
-            Example.Console.Changed += new EventHandler(Console_Changed);
-            Example.InputFileChanged += new EventHandler(Input_Changed);
+            if (example != null)
+            {
+                Example.Console.Changed += Console_Changed;
+                Example.InputFileChanged += Input_Changed;
+            }
             Name = name;
             OriginalFileName = solutionFile;
             Category = category;
@@ -87,7 +89,7 @@ namespace ExamplesFx
         /// <summary>
         /// Example class that runs
         /// </summary>
-        public ExampleBase Example { get; private set; }
+        public ExampleBase Example { get; }
 
         /// <summary>
         /// Title set from code
@@ -138,13 +140,13 @@ namespace ExamplesFx
             try {
                 ExamplesEnvironment.InitEnvironment(this);
 
-                this.Example.RunExample();
+                Example.RunExample();
             }
             catch (Exception ex) {
-                this.Example.Exception = ex;
+                Example.Exception = ex;
             }
             finally {
-                foreach (var file in this.Files) {
+                foreach (var file in Files) {
                     if (file.Status == ExampleFile.FileType.InputFile)
                         File.Delete(file.Filename);
                     if (file.Status == ExampleFile.FileType.OutputFile) {

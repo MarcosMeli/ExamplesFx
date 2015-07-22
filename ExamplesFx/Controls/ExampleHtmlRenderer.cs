@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-
 
 namespace ExamplesFx.Controls
 {
@@ -42,14 +39,14 @@ namespace ExamplesFx.Controls
 
         private void RenderExample()
         {
-            this.SuspendLayout();
+            SuspendLayout();
 
             Clear();
 
             //lblDescription.Text = Example.Description;
             cmdRunDemo.Visible = Example.Runnable;
             browserExample.DocumentText = ExampleToHtml();
-            this.ResumeLayout();
+            ResumeLayout();
 
             if (Example.AutoRun)
                 RunExample();

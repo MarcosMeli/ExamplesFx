@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -42,7 +40,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"(?s)<!--.*-->",
                         new Dictionary<int, string> {
-                            {0, ScopeName.HtmlComment},
+                            {0, ScopeName.HtmlComment}
                         }),
                     new LanguageRule(
                         @"(?i)(<%)(@)(?:\s+([a-z0-9]+))*(?:\s+([a-z0-9]+)\s*(=)\s*(""[^\n]*?""))*\s*?(%>)",
@@ -117,7 +115,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                         @"(?i)&\#?[a-z0-9]+?;",
                         new Dictionary<int, string> {
                             {0, ScopeName.HtmlEntity}
-                        }),
+                        })
                 };
             }
         }

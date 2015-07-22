@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.   
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -36,8 +34,8 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                             {5, ScopeName.CssPropertyName},
                             {6, ScopeName.CssPropertyValue},
                             {4, ScopeName.Comment},
-                            {1, ScopeName.Comment},
-                        }),
+                            {1, ScopeName.Comment}
+                        })
                 };
             }
         }

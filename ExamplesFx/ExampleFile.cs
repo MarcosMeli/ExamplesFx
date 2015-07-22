@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace ExamplesFx
+﻿namespace ExamplesFx
 {
     public class ExampleFile
     {
@@ -24,7 +20,7 @@ namespace ExamplesFx
             SourceFile,
             InputFile,
             OutputFile,
-            HtmlFile,
+            HtmlFile
         }
 
         /// <summary>

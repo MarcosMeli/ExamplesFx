@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -32,7 +30,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/",
                         new Dictionary<int, string> {
-                            {0, ScopeName.Comment},
+                            {0, ScopeName.Comment}
                         }),
                     new LanguageRule(
                         @"(//.*?)\r?$",
@@ -52,8 +50,8 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"\b(abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|false|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|null|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|true|try|void|volatile|while)\b",
                         new Dictionary<int, string> {
-                            {0, ScopeName.Keyword},
-                        }),
+                            {0, ScopeName.Keyword}
+                        })
                 };
             }
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using ExamplesFx.ColorCode.Formatting;
+﻿using ExamplesFx.ColorCode.Formatting;
 
 namespace ExamplesFx.ColorCode
 {

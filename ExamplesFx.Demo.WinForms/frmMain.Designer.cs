@@ -1,11 +1,14 @@
-﻿namespace ExamplesFx.Demo.WinForms
+﻿using System.ComponentModel;
+using ExamplesFx.Controls;
+
+namespace ExamplesFx.Demo.WinForms
 {
     partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -53,7 +56,7 @@
 
         #endregion
 
-        private Controls.ExamplesContainerWithHeader exampleContainer;
+        private ExamplesContainerWithHeader exampleContainer;
     }
 }
 

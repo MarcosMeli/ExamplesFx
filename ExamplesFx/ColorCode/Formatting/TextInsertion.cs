@@ -1,8 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ExamplesFx.ColorCode.Parsing;
 
 namespace ExamplesFx.ColorCode.Formatting

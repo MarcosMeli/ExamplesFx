@@ -1,7 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ExamplesFx.ColorCode.Common;
 
@@ -32,7 +30,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"\<![ \r\n\t]*(--([^\-]|[\r\n]|-[^\-])*--[ \r\n\t]*)\>",
                         new Dictionary<int, string> {
-                            {0, ScopeName.HtmlComment},
+                            {0, ScopeName.HtmlComment}
                         }),
                     new LanguageRule(
                         @"(?i)(<!)(doctype)(?:\s+([a-z0-9]+))*(?:\s+("")([^\n]*?)(""))*(>)",
@@ -102,7 +100,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                     new LanguageRule(
                         @"(?i)&[a-z0-9]+?;",
                         new Dictionary<int, string> {
-                            {0, ScopeName.XmlAttribute},
+                            {0, ScopeName.XmlAttribute}
                         }),
                     new LanguageRule(
                         @"(?s)(<!\[CDATA\[)(.*?)(\]\]>)",
@@ -110,7 +108,7 @@ namespace ExamplesFx.ColorCode.Compilation.Languages
                             {1, ScopeName.XmlDelimiter},
                             {2, ScopeName.XmlCDataSection},
                             {3, ScopeName.XmlDelimiter}
-                        }),
+                        })
                 };
             }
         }

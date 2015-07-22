@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ExamplesFx.Demo
+﻿namespace ExamplesFx.Demo
 {
 	public class ProgramDemo: ExampleBase
     {
-        //Html-> <h2>SuperTest</h2>
+        //-> <h2>SuperTest</h2>
 
-        //Html-> You can add html to the <b>code</b>
+        //-> You can add html to the <b>code</b>
 
 		public override void Run()
 		{
-			Console.WriteLine("Test Example !!");
-		}
+            // This is a cool example
 
-        //Html-> Now the consola has this text
+			Console.WriteLine("Test Example !!");
+
+            Console.WriteLine("Congrats !!");
+        }
+
+        //-> Now the consola has this text
 
     }
 }

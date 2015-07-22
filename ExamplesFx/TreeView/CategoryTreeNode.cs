@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Windows.Forms;
 
 namespace ExamplesFx.TreeView
@@ -14,8 +11,8 @@ namespace ExamplesFx.TreeView
     {
         public CategoryTreeNode()
         {
-            this.SelectedImageKey = "demo";
-            this.ImageKey = "demo";
+            SelectedImageKey = "demo";
+            ImageKey = "demo";
         }
 
         public override object Clone()
@@ -30,8 +27,8 @@ namespace ExamplesFx.TreeView
         public CategoryTreeNode(string text)
             : base(text)
         {
-            this.SelectedImageKey = "demo";
-            this.ImageKey = "demo";
+            SelectedImageKey = "demo";
+            ImageKey = "demo";
         }
 
 
@@ -42,13 +39,13 @@ namespace ExamplesFx.TreeView
         public void OutputHtml(StringBuilder index, int indent)
         {
             index.Append("<h3>");
-            index.Append(this.Text);
+            index.Append(Text);
             index.AppendLine("</h3>");
 
             if (Nodes.Count > 0) {
                 int newIndent = indent + 1;
                 index.AppendLine("<blockquote><dl>");
-                foreach (var node in this.Nodes) {
+                foreach (var node in Nodes) {
                     if (node is IHtmlWriter)
                         ((IHtmlWriter) node).OutputHtml(index, newIndent);
                 }

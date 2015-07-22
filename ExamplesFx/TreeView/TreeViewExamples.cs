@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -24,7 +23,7 @@ namespace ExamplesFx.TreeView
                 cat.Nodes.Add(exampleNode);
             }
 
-            this.ExpandAll();
+            ExpandAll();
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace ExamplesFx.TreeView
                 if (!mCategories.TryGetValue(categ, out categNode)) {
                     categNode = new CategoryTreeNode(categ);
                     if (previous == null)
-                        this.Nodes.Add(categNode);
+                        Nodes.Add(categNode);
                     else
                         previous.Nodes.Add(categNode);
 
@@ -66,7 +65,7 @@ namespace ExamplesFx.TreeView
         {
             get
             {
-                var node = this.SelectedNode as ExampleTreeNode;
+                var node = SelectedNode as ExampleTreeNode;
                 if (node == null)
                     return null;
 
@@ -84,7 +83,7 @@ namespace ExamplesFx.TreeView
 
             GetHeadAndFoot(out Heading, out Footing);
             res.AppendLine(Heading);
-            foreach (var node in this.Nodes) {
+            foreach (var node in Nodes) {
                 if (node is IHtmlWriter)
                     ((IHtmlWriter) node).OutputHtml(res, newIndent);
             }

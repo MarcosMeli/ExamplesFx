@@ -17,7 +17,7 @@ namespace ExamplesFx.TreeView
 
         private void DoubleBuffer(bool setting)
         {
-            Type dgvType = this.GetType();
+            Type dgvType = GetType();
             var pi = dgvType.GetProperty("DoubleBuffered",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this, setting, null);
@@ -74,21 +74,21 @@ namespace ExamplesFx.TreeView
             mFirstSearch = false;
             if (mAllNodes == null) {
                 mAllNodes = new List<TreeNode>();
-                foreach (TreeNode node in this.Nodes)
+                foreach (TreeNode node in Nodes)
                     mAllNodes.Add(node);
             }
 
 
-            this.BeginUpdate();
-            this.Nodes.Clear();
+            BeginUpdate();
+            Nodes.Clear();
             var resultNodes = new List<TreeNode>();
             var filtered = SearchInNodes(mAllNodes);
 
             foreach (var nodeFiltered in filtered)
-                this.Nodes.Add(nodeFiltered);
+                Nodes.Add(nodeFiltered);
 
-            this.ExpandAll();
-            this.EndUpdate();
+            ExpandAll();
+            EndUpdate();
         }
 
         private List<TreeNode> SearchInNodes(IEnumerable nodes)

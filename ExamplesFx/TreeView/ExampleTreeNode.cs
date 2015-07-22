@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -20,9 +18,9 @@ namespace ExamplesFx.TreeView
         public ExampleTreeNode(ExampleCode example)
             : base(example.Name)
         {
-            this.Example = example;
-            this.SelectedImageKey = "folder";
-            this.ImageKey = "folder";
+            Example = example;
+            SelectedImageKey = "folder";
+            ImageKey = "folder";
         }
 
         public override object Clone()
@@ -70,7 +68,7 @@ namespace ExamplesFx.TreeView
                     index.Append("<dd>");
                     if (error) {
                         index.Append("<p>Error: ");
-                        index.Append(MyException.ToString());
+                        index.Append(MyException);
                         index.Append("</p>");
                     }
                     index.Append(Example.Description);
@@ -94,12 +92,12 @@ namespace ExamplesFx.TreeView
 
         string ISearchableNode.GetName()
         {
-            return this.Example.Name;
+            return Example.Name;
         }
 
         string ISearchableNode.GetDescription()
         {
-            return this.Example.Description;
+            return Example.Description;
         }
 
         string ISearchableNode.GetDescriptionExtra()

@@ -1,11 +1,15 @@
-﻿namespace ExamplesFx.Controls
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+
+namespace ExamplesFx.Controls
 {
     partial class FileRenderer
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -82,9 +86,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblFileName;
-        private System.Windows.Forms.Button cmdCopy;
-        private System.Windows.Forms.Integration.ElementHost txtCode;
+        private Label lblFileName;
+        private Button cmdCopy;
+        private ElementHost txtCode;
         private TextEditorWpf textEditorWpf1;
         //private TextEditorWpf txtCode;
         

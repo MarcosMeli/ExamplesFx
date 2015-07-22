@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 
 namespace ExamplesFx
@@ -94,7 +92,7 @@ namespace ExamplesFx
         /// but this internal member captures output and
         /// sends to a ExampleFile.
         /// </summary>
-        public VirtualConsole Console { get; private set; }
+        public VirtualConsole Console { get; }
 
         public string InputFile { get; private set; }
 

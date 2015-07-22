@@ -1,4 +1,6 @@
-﻿using ExamplesFx.TreeView;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using ExamplesFx.TreeView;
 
 namespace ExamplesFx.Controls
 {
@@ -7,7 +9,7 @@ namespace ExamplesFx.Controls
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -217,14 +219,14 @@ namespace ExamplesFx.Controls
 
         private TreeViewExamples tvExamples;
         private ExampleHtmlRenderer exampleRenderer;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton cmdCollapse;
-        private System.Windows.Forms.ToolStripButton cmdExpand;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripTextBox txtSearch;
-        private System.Windows.Forms.ToolStripComboBox cboSearchMode;
-        private System.Windows.Forms.ImageList imgTreeView;
-        private System.Windows.Forms.Panel panel1;
-        protected System.Windows.Forms.SplitContainer splitContainer1;
+        private ToolStrip toolStrip1;
+        private ToolStripButton cmdCollapse;
+        private ToolStripButton cmdExpand;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripTextBox txtSearch;
+        private ToolStripComboBox cboSearchMode;
+        private ImageList imgTreeView;
+        private Panel panel1;
+        protected SplitContainer splitContainer1;
     }
 }
