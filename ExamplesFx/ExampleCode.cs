@@ -89,7 +89,7 @@ namespace ExamplesFx
         /// <summary>
         /// Example class that runs
         /// </summary>
-        public ExampleBase Example { get; }
+        public ExampleBase Example { get; private set; }
 
         /// <summary>
         /// Title set from code

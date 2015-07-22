@@ -92,7 +92,7 @@ namespace ExamplesFx
         /// but this internal member captures output and
         /// sends to a ExampleFile.
         /// </summary>
-        public VirtualConsole Console { get; }
+        public VirtualConsole Console { get; private set; }
 
         public string InputFile { get; private set; }
 

@@ -90,7 +90,7 @@ namespace ExamplesFx
                 Path = path;
             }
 
-            public string Path { get; }
+            public string Path { get; private set; }
             public event FileSystemEventHandler Created;
 
             private void OnCreated(FileSystemEventArgs e)

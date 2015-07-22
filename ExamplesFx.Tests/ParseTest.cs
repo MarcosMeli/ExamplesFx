@@ -18,6 +18,7 @@ namespace ExamplesFx.Tests
             var parser = new ExampleParser();
             var html = parser.CreateFromFile(File.ReadAllText(@"..\..\ExamplesFx.Demo.WinForms\Examples\10.Basics\1.Demo.cs"));
             Assert.IsNotNull(html);
+            
         }
 
         [TestCase]
@@ -50,7 +51,7 @@ namespace ExamplesFx.Tests
                 ex.Files.Add(mainExample);
                 mainExample.Contents = fileContent;
 
-                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersPage\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + RemoveOrder(doc.Name));
+                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + RemoveOrder(doc.Name));
                 examplePath = Path.ChangeExtension(examplePath, "html");
 
                 File.WriteAllText(examplePath, fileContent);
