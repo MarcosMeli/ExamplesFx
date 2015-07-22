@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using ExamplesFx.Controls;
 
 namespace ExamplesFx.Demo.WinForms
 {
@@ -9,12 +13,11 @@ namespace ExamplesFx.Demo.WinForms
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
         }
-
     }
 }

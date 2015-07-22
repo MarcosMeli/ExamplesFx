@@ -6,10 +6,12 @@ using Microsoft.CodeAnalysis.MSBuild;
 using NUnit.Framework;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using ExamplesFx.Controls;
 
 namespace ExamplesFx.Tests
 {
-    [TestFixture]
+    [TestFixture, RequiresSTA]
     public class ParseTest
     {
         [TestCase]
@@ -56,7 +58,17 @@ namespace ExamplesFx.Tests
 
                 File.WriteAllText(examplePath, fileContent);
             }
-            
+
+            var frm = new Form();
+            var container = new ExamplesContainerWithHeader();
+            container.Dock = DockStyle.Fill;
+            frm.Controls.Add(container);
+
+            frm.Height = 800;
+            frm.Width = 1024;
+            container.LoadExamples(res);
+
+            frm.ShowDialog();
         }
 
         private string RemoveOrder(string s)

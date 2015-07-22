@@ -131,7 +131,7 @@ namespace ExamplesFx.Controls
 
             Theme.AddExampleTitle(res, Example);
 
-            if (string.IsNullOrEmpty(Example.Example.HtmlBody)) {
+            if (Example.Example == null || string.IsNullOrEmpty(Example.Example.HtmlBody)) {
                 for (int i = 0; i < Example.Files.Count; i++) {
                     var file = Example.Files[i];
 
