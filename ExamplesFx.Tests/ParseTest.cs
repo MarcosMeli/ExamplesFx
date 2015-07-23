@@ -42,29 +42,21 @@ namespace ExamplesFx.Tests
                     continue;
 
                 var extraPath = string.Join("_", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
-                var category = string.Join(@"\", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
 
-                var exampleName = Path.GetFileNameWithoutExtension(RemoveOrder(doc.Name));
-                var ex = new ExampleCode(null, exampleName, category, doc.FilePath);
+                var ex = CreateExample(doc); 
                 res.Add(ex);
 
-                var fileContent = doc.GetTextAsync().Result.ToString();
 
-                var mainExample = new ExampleFile("");
-                ex.Files.Add(mainExample);
-                mainExample.Contents = fileContent;
-
-
-                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + exampleName) + ".html";
+                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + ex.Name) + ".html";
                 
-                fileContent = @"---
+                var html = @"---
 layout: default
-title: "+ exampleName + @"
-permalink: /Example/"+ exampleName + @"
+title: "+ ex.Name + @"
+permalink: /example/"+ (ex.Category.Length > 0 ? ex.Category + "/" : "") + ex.Name + @"/
 ---
-" +
-                    fileContent;
-                File.WriteAllText(examplePath, fileContent);
+" + ex.Files[0].Contents ;
+
+                File.WriteAllText(examplePath, html);
             }
 
             CreateIndex(res);
@@ -79,15 +71,52 @@ permalink: /Example/"+ exampleName + @"
             frm.Width = 1024;
             container.LoadExamples(res);
 
-            frm.ShowDialog();
+           // frm.ShowDialog();
+        }
+
+        private ExampleCode CreateExample(Document doc)
+        {
+            var category = string.Join(@"/", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
+            var exampleName = Path.GetFileNameWithoutExtension(RemoveOrder(doc.Name));
+            var fileContent = doc.GetTextAsync().Result.ToString();
+
+            var res = new ExampleCode(null, exampleName, category, doc.FilePath);
+
+            var mainExample = new ExampleFile("");
+            res.Files.Add(mainExample);
+
+            mainExample.Contents = fileContent;
+
+            return res;
+
+
         }
 
         private void CreateIndex(List<ExampleCode> res)
         {
-            //var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath + "_") + RemoveOrder(doc.Name));
+            var indexPath = @"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples.html";
             //examplePath = Path.ChangeExtension(examplePath, "html");
 
-            //File.WriteAllText(examplePath, fileContent);
+            var fileContent = new StringBuilder();
+            fileContent.AppendLine(@"---
+layout: default
+title: Library Examples
+permalink: /examples/
+---");
+            foreach (var category in res.GroupBy(x => x.Category))
+            {
+                fileContent.AppendLine("<h4>" + category.Key + "</h4>");
+                fileContent.AppendLine("<div class='indent'><ul>");
+
+                foreach (var example in category)
+                {
+                    fileContent.AppendLine("<li><a href='/example/"+ (example.Category.Length > 0 ? example.Category + "/" : "") + example.Name + "/' >" + example.Name+"</a></li>");
+                }
+
+                fileContent.AppendLine("</ul></div>");
+            }
+
+            File.WriteAllText(indexPath, fileContent.ToString());
 
 
         }
