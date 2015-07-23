@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ExamplesFx.Controls;
+using System.Text.RegularExpressions;
 
 namespace ExamplesFx.Tests
 {
@@ -46,15 +47,21 @@ namespace ExamplesFx.Tests
                 var ex = CreateExample(doc); 
                 res.Add(ex);
 
-
-                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome\examples", (string.IsNullOrEmpty(extraPath) ? "" : extraPath+ "_") + ex.Name) + ".html";
+                var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome", ex.Url.Substring(1) + ".html");
                 
                 var html = @"---
 layout: default
 title: "+ ex.Name + @"
-permalink: /example/"+ (ex.Category.Length > 0 ? ex.Category + "/" : "") + ex.Name + @"/
+permalink: "+ ex.Url + @"/
 ---
-" + ex.Files[0].Contents ;
+{% highlight csharp %}
+" + ex.Files[0].Contents +
+@"
+{%  endhighlight %}
+";
+
+                if (!Directory.Exists(Path.GetDirectoryName(examplePath)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(examplePath));
 
                 File.WriteAllText(examplePath, html);
             }
@@ -71,17 +78,58 @@ permalink: /example/"+ (ex.Category.Length > 0 ? ex.Category + "/" : "") + ex.Na
             frm.Width = 1024;
             container.LoadExamples(res);
 
-           // frm.ShowDialog();
+           frm.ShowDialog();
         }
 
         private ExampleCode CreateExample(Document doc)
         {
             var category = string.Join(@"/", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
-            var exampleName = Path.GetFileNameWithoutExtension(RemoveOrder(doc.Name));
+            var exampleFileName = Path.GetFileNameWithoutExtension(RemoveOrder(doc.Name));
+            var exampleName = exampleFileName;
+            var exampleDescription = "";
             var fileContent = doc.GetTextAsync().Result.ToString();
 
-            var res = new ExampleCode(null, exampleName, category, doc.FilePath);
 
+            var tree = doc.GetSyntaxTreeAsync().Result;
+
+            var comments = tree.GetRoot().DescendantTrivia(n => true, true);
+            var regexOptions = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace;
+            var match = Regex.Match(fileContent, @"\/\/\-\>\s*(Example\.)?Name\s*:(?<name>.*)", regexOptions);
+
+            if (match.Success)
+                exampleName = match.Groups["name"].Value.Trim();
+
+            match = Regex.Match(fileContent, @"\/\/\-\>\s*(Example\.)?Description\s*:(?<description>.*)", regexOptions | RegexOptions.Multiline);
+
+            if (match.Success)
+                exampleDescription = match.Groups["description"].Value.Trim();
+
+        
+            var res = new ExampleCode(null, exampleName, category, doc.FilePath);
+            res.Url = "/example/" + (res.Category.Length > 0 ? res.Category.Replace(" ", "_") + "/" : "") + RemoveOrder(Path.GetFileNameWithoutExtension(doc.Name)).Replace(" ", "_");
+
+            match = Regex.Match(fileContent, @"\/\/\-\>\s*(Example\.)?Runnable\s*:(?<runnable>.*)", regexOptions | RegexOptions.Multiline);
+            if (match.Success)
+            {
+                var runnable = match.Groups["runnable"].Value.Trim();
+                res.Runnable = runnable.Equals("yes", StringComparison.OrdinalIgnoreCase) ||
+                                runnable.Equals("true", StringComparison.OrdinalIgnoreCase) ||
+                                runnable.Equals("1", StringComparison.OrdinalIgnoreCase);
+
+            }
+
+            match = Regex.Match(fileContent, @"\/\/\-\>\s*(Example\.)?AutoRun\s*:(?<autorun>.*)", regexOptions | RegexOptions.Multiline);
+            if (match.Success)
+            {
+                var autorun = match.Groups["runnable"].Value.Trim();
+                res.AutoRun = autorun.Equals("yes", StringComparison.OrdinalIgnoreCase) ||
+                                autorun.Equals("true", StringComparison.OrdinalIgnoreCase) ||
+                                autorun.Equals("1", StringComparison.OrdinalIgnoreCase);
+
+            }
+
+
+            res.Description = exampleDescription;
             var mainExample = new ExampleFile("");
             res.Files.Add(mainExample);
 
@@ -105,12 +153,16 @@ permalink: /examples/
 ---");
             foreach (var category in res.GroupBy(x => x.Category))
             {
-                fileContent.AppendLine("<h4>" + category.Key + "</h4>");
-                fileContent.AppendLine("<div class='indent'><ul>");
+                fileContent.AppendLine("<h5>" + category.Key + "</h5>");
+                fileContent.AppendLine("<div class='indent'><ul class='collection'>");
 
                 foreach (var example in category)
                 {
-                    fileContent.AppendLine("<li><a href='/example/"+ (example.Category.Length > 0 ? example.Category + "/" : "") + example.Name + "/' >" + example.Name+"</a></li>");
+                    var exampleUrl = example.Url;
+
+                    fileContent.AppendLine("<li class='collection-item' style='cursor: pointer;' onclick=\"location.href = '"+
+                        exampleUrl +"'; \"><a href='" +exampleUrl+"' >" + example.Name+"</a><br/>" +
+                        "<span class='example-description'>"+ example.Description+"</span></li>");
                 }
 
                 fileContent.AppendLine("</ul></div>");

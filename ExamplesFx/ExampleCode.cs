@@ -128,6 +128,7 @@ namespace ExamplesFx
         /// Is this test runnable
         /// </summary>
         public bool AutoRun { get; set; }
+        public string Url { get; set; }
 
         ///// <summary>
         ///// Indicates if the Example has Console Output
