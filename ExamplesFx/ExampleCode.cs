@@ -90,7 +90,7 @@ namespace ExamplesFx
         /// <summary>
         /// Example class that runs
         /// </summary>
-        public ExampleBase Example { get; private set; }
+        public ExampleBase Example { get; set; }
 
         /// <summary>
         /// Title set from code
@@ -154,6 +154,12 @@ namespace ExamplesFx
                 Example.Exception = ex;
             }
             finally {
+                foreach (var part in Parts)
+                {
+                    var console = part as ConsolePart;
+                    if (console != null)
+                        console.ConsoleOutput = Example.Console.Output;
+                }
                 foreach (var file in Files) {
                     if (file.Status == ExampleFile.FileType.InputFile)
                         File.Delete(file.Filename);

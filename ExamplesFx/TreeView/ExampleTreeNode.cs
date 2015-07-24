@@ -50,36 +50,7 @@ namespace ExamplesFx.TreeView
                 MyException = ex;
             }
             bool found = false;
-            foreach (var file in Example.Files.Where(x => x.Status == ExampleFile.FileType.HtmlFile)) {
-                //  overview files should come first and be on their own...
-                //  they are intended to display on the screen and be
-                //  embedded into the index at the appropriate spot
-                if (file.Filename.ToLower() == "overview.html") {
-                    index.AppendLine("<li>");
-                    index.AppendLine(file.Contents);
-                    index.AppendLine("</li>");
-                }
-                else {
-                    index.Append("<dt><a href=\"");
-                    index.Append(file.Filename);
-                    index.Append("\">");
-                    index.Append(Example.Name);
-                    index.AppendLine("</a></dt>");
-                    index.Append("<dd>");
-                    if (error) {
-                        index.Append("<p>Error: ");
-                        index.Append(MyException);
-                        index.Append("</p>");
-                    }
-                    index.Append(Example.Description);
-                    index.AppendLine("</dd>");
-
-                    var wrapper = new HtmlWrapper(file.Contents, Example.Files);
-                    wrapper.Export(file.Filename);
-                    found = true;
-                }
-            }
-
+            
             if (!found) {
                 index.Append("<dt><u>Missing</u> ");
                 index.Append(Example.Name);
