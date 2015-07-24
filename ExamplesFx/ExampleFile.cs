@@ -1,6 +1,7 @@
 ﻿namespace ExamplesFx
 {
-    public class ExampleFile
+    public class ExampleFile: 
+        IExamplePart
     {
         public ExampleFile(string filename)
             : this(filename, NetLanguage.CSharp) {}
@@ -29,5 +30,18 @@
         public FileType Status = FileType.SourceFile;
 
         public NetLanguage Language { get; set; }
+        public string Render()
+        {
+            var html = "";
+            if (!string.IsNullOrEmpty(Filename))
+                html += "<p>" + Filename + "</p>";
+            html += @"
+{% highlight csharp %}
+" + Contents +
+                    @"
+{%  endhighlight %}
+";
+            return html;
+        }
     }
 }

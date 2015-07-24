@@ -192,6 +192,7 @@
     <Compile Include="ExampleCode.cs" />
     <Compile Include="ExampleFile.cs" />
     <Compile Include="ExamplesEnvironment.cs" />
+    <Compile Include="HtmlPart.cs" />
     <Compile Include="HtmlWrapper.cs" />
     <Compile Include="NetLanguage.cs" />
     <Compile Include="Parser\ExampleParser.cs" />

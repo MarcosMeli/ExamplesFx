@@ -55,6 +55,7 @@ namespace ExamplesFx
             Runnable = true;
             AutoRun = false;
             Files = new List<ExampleFile>();
+            Parts = new List<IExamplePart>();
         }
 
         internal event EventHandler ConsoleChanged;
@@ -94,7 +95,7 @@ namespace ExamplesFx
         /// <summary>
         /// Title set from code
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public string OriginalFileName { get; private set; }
 
@@ -118,6 +119,11 @@ namespace ExamplesFx
         /// </summary>
         public List<ExampleFile> Files { get; set; }
 
+        /// <summary>
+        /// List of logical files extracted from the code
+        /// </summary>
+        public List<IExamplePart> Parts { get; set; }
+
 
         /// <summary>
         /// Is this test runnable
@@ -128,6 +134,7 @@ namespace ExamplesFx
         /// Is this test runnable
         /// </summary>
         public bool AutoRun { get; set; }
+
         public string Url { get; set; }
 
         ///// <summary>
@@ -162,5 +169,10 @@ namespace ExamplesFx
         {
             var name = Path.GetFileName(fullPath);
         }
+    }
+
+    public interface IExamplePart
+    {
+        string Render();
     }
 }
