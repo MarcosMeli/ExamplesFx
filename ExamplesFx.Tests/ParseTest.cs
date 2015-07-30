@@ -20,15 +20,7 @@ namespace ExamplesFx.Tests
     [TestFixture, RequiresSTA]
     public class ParseTest
     {
-        [TestCase]
-        public void SimpleFile()
-        {
-            var parser = new ExampleParser();
-            var html =
-                parser.CreateFromFile(File.ReadAllText(@"..\..\ExamplesFx.Demo.WinForms\Examples\10.Basics\1.Demo.cs"));
-            Assert.IsNotNull(html);
-
-        }
+      
 
         [TestCase]
         public void GenerateFileHelpersDoc()
@@ -128,6 +120,7 @@ permalink: " + ex.Url + @"/
 
             var tree = doc.GetSyntaxTreeAsync().Result;
             var res = new ExampleCode(null, exampleName, category, doc.FilePath);
+            res.AutoRun = true;
 
             var namespaceDeclaration = (NamespaceDeclarationSyntax) tree.GetRoot().DescendantNodes().First(x => x.IsKind(SyntaxKind.NamespaceDeclaration));
             var node = (ClassDeclarationSyntax) tree.GetRoot().DescendantNodes().First(x => x.IsKind(SyntaxKind.ClassDeclaration));
@@ -141,17 +134,14 @@ permalink: " + ex.Url + @"/
             var regexOptions = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace;
 
 
-            res.Url = "/example/" + (res.Category.Length > 0 ? res.Category.Replace(" ", "_") + "/" : "") +
-                      RemoveOrder(Path.GetFileNameWithoutExtension(doc.Name)).Replace(" ", "_");
+            res.Url = "/example/" + (res.Category.Length > 0 ? res.Category.Replace(" ", "") + "/" : "") +
+                      RemoveOrder(Path.GetFileNameWithoutExtension(doc.Name)).Replace(" ", "");
 
 
             if (res.Runnable && res.AutoRun)
                 res.RunExample();
 
-
             return res;
-
-
         }
 
         class TriviaWalker : SyntaxWalker
