@@ -67,6 +67,10 @@ namespace ExamplesFx
                 handler(this, EventArgs.Empty);
         }
 
+
+        public string ConsoleOutput => Example.Console.Output;
+
+
         private void Console_Changed(object sender, EventArgs e)
         {
             OnConsoleChanged();
