@@ -141,7 +141,7 @@ namespace ExamplesFx
 
         public string Url { get; set; }
 
-        ///// <summary>
+        ///// <summary> 
         ///// Indicates if the Example has Console Output
         ///// </summary>
         //public bool HasOutput { get; set; }

@@ -55,8 +55,17 @@ namespace ExamplesFx.Tests
 
                 var extraPath = string.Join("_", doc.Folders.Skip(1).Select(x => RemoveOrder(x)));
 
-                var ex = CreateExample(doc, assembly);
-                res.Add(ex);
+                ExampleCode ex;
+
+                try
+                {
+                    ex = CreateExample(doc, assembly);
+                    res.Add(ex);
+                }
+                catch (Exception exception)
+                {
+                    throw new Exception(doc.Name + ": " + exception.Message, exception);
+                }
 
                 var examplePath = Path.Combine(@"d:\Desarrollo\Devoo\GitHub\FileHelpersHome",
                     ex.Url.Substring(1).Replace("/", "\\") + ".html");
@@ -87,7 +96,7 @@ permalink: " + ex.Url + @"/
 
                 if (!string.IsNullOrWhiteSpace(ex.ConsoleOutput) && ex.Parts.FirstOrDefault(x => x is ConsolePart) == null)
                 {
-                    var consolePart = new ConsolePart();
+                   var consolePart = new ConsolePart();
                     consolePart.ConsoleOutput = ex.ConsoleOutput;
 
                     html.AppendLine();
@@ -149,8 +158,15 @@ permalink: " + ex.Url + @"/
                       RemoveOrder(Path.GetFileNameWithoutExtension(doc.Name)).Replace(" ", "");
 
 
-            if (res.Runnable && res.AutoRun)
+            if (res.Runnable &&
+                res.AutoRun)
+            {
                 res.RunExample();
+                var exception = res.Example.Exception;
+
+                if (exception != null)
+                    throw new Exception(doc.Name + ": " + exception.Message, exception);
+            }
 
             return res;
         }
@@ -376,8 +392,25 @@ permalink: " + ex.Url + @"/
                     if (contentsTrimmed.StartsWith("/*") && contentsTrimmed.EndsWith("*/"))
                     {
                         mStartFile.Contents = contentsTrimmed.Substring(2, contentsTrimmed.Length - 4);
-                    }
+                        if (mStartFile.Status == ExampleFile.FileType.InputFile)
+                        {
+                            var trimmed = new StringBuilder(mStartFile.Contents.Length);
+                            using (var reader = new StringReader(mStartFile.Contents))
+                            {
+                                var line = "";
+                                while ((line = reader.ReadLine()) != null)
+                                {
+                                    var trimStart = line.TrimStart();
+                                    if (trimStart.StartsWith("*"))
+                                        trimStart = trimStart.Substring(1);
 
+                                    trimmed.AppendLine(trimStart);
+                                }
+                            }
+                            mStartFile.Contents = trimmed.ToString();
+                        }
+                    }
+                    mStartFile = null;
                     // Grab The File
                     //mStartFileNode = trivia.;
                     //ex.Parts.Add(mStartFile);
