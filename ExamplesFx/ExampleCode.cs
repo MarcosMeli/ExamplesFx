@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace ExamplesFx
 {
@@ -169,7 +170,7 @@ namespace ExamplesFx
                         File.Delete(file.Filename);
                     if (file.Status == ExampleFile.FileType.OutputFile) {
                         if (File.Exists(file.Filename))
-                            file.Contents = File.ReadAllText(file.Filename);
+                            file.Contents = File.ReadAllText(file.Filename, Encoding.Default);
                     }
                 }
             }

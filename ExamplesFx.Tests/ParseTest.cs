@@ -75,6 +75,7 @@ namespace ExamplesFx.Tests
                 var html = new StringBuilder(@"---
 layout: default
 title: " + ex.Name + @"
+description: " + ex.Description + @"
 permalink: " + ex.Url + @"/
 editlink:  'https://github.com/MarcosMeli/FileHelpers/edit/master/FileHelpers.Examples/" + string.Join("/", doc.Folders) + "/" + doc.Name + @"'
 ---
@@ -391,6 +392,35 @@ editlink:  'https://github.com/MarcosMeli/FileHelpers/edit/master/FileHelpers.Ex
                         break;
 
                     mStartFile.Contents = fileText.GetSubText(new TextSpan(mStartFileNode.Value, trivia.SpanStart - mStartFileNode.Value)).ToString();
+
+                    var untabiffy = new StringBuilder(mStartFile.Contents.Length);
+                    using (var reader = new StringReader(mStartFile.Contents))
+                    {
+                        var line = "";
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            var lineRes = "";
+
+                            for (int i = 0; i < line.Length; i++)
+                            {
+                                var currentChar = line[i];
+
+                                if (currentChar == '\t')
+                                    lineRes += "    ";
+                                else if (char.IsWhiteSpace(currentChar))
+                                    lineRes += currentChar;
+                                else
+                                {
+                                    lineRes += line.Substring(i);
+                                    break;
+                                }
+                            }
+                            untabiffy.AppendLine(lineRes);
+                        }
+                    }
+                    mStartFile.Contents = untabiffy.ToString();
+
+
                     var contentsTrimmed = mStartFile.Contents.Trim();
                     if (contentsTrimmed.StartsWith("/*") && contentsTrimmed.EndsWith("*/"))
                     {
