@@ -120,6 +120,19 @@ namespace ExamplesFx
         public string Category { get; set; }
 
         /// <summary>
+        /// The File or Url adapted category
+        /// </summary>
+        public string CategoryFileName {
+            get
+            {
+                if (string.IsNullOrEmpty(Category))
+                    return "";
+
+                return Category.Replace(" ", "").Replace("/", "-");
+            }
+        }
+
+        /// <summary>
         /// List of logical files extracted from the code
         /// </summary>
         public List<ExampleFile> Files { get; set; }
@@ -141,6 +154,8 @@ namespace ExamplesFx
         public bool AutoRun { get; set; }
 
         public string Url { get; set; }
+        public ExampleCode NextExample { get; set; }
+        public ExampleCode PreviousExample { get; set; }
 
         ///// <summary> 
         ///// Indicates if the Example has Console Output
